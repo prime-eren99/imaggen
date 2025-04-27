@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: imaggen-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: MONGODB_URI
+        value: your-mongo-uri
+      - key: AI_MODEL_API_KEY
+        value: your-api-key
+  - type: web
+    name: imaggen-frontend
+    env: static
+    plan: free
+    buildCommand: npm run build
+    startCommand: serve -s build
